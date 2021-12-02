@@ -13,7 +13,7 @@ The robot can't:
 * Move its wheels at an angular velocity higher than 10 rad/s
 
 Further improvements might include:
-* Obstacle detecting capabilities
+* Obstacle detection/ avoidance and higher level path awareness and planning
 * Not having to stop while changing the steering angle of its wheels
 
 This project is GPL-3.0 Liscenced to Aditya Nair under GogiPuttar.
