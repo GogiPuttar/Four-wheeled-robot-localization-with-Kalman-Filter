@@ -3,4 +3,4 @@ These are the files for a simulated robot and its controller built using Webots.
 
 Given a **list of coordinates**, the robot will **autonomously drive itself to each coordinate in the list in that order and stop when it reaches the final point**. To try this out for yourself, all you need to do is install [Webots](https://cyberbotics.com/), download the "kf_1" file and load the world into the program. The default robot controller should be "kf_controller_final".     
 
-
+This project is GPL-3.0 Liscenced to Aditya Nair under GogiPuttar.
