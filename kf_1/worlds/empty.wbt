@@ -1,0 +1,220 @@
+#VRML_SIM R2021b utf8
+WorldInfo {
+  coordinateSystem "NUE"
+}
+Viewpoint {
+  orientation -0.662626391358055 0.7323438598553184 0.15683984317773061 0.5837014279964436
+  position 0.540077166794838 0.7914656081229519 1.2945008507248585
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+Robot {
+  children [
+    GPS {
+    }
+    DEF WL Hinge2Joint {
+      jointParameters HingeJointParameters {
+        axis 0 1 0
+        anchor 0.045 0.025 -0.0505
+      }
+      jointParameters2 JointParameters {
+      }
+      device [
+        Brake {
+          name "steer_left_brake"
+        }
+        RotationalMotor {
+          name "steer_left_motor"
+        }
+      ]
+      device2 [
+        RotationalMotor {
+          name "front_left_motor"
+        }
+      ]
+      endPoint Solid {
+        translation 0.045 0.025 -0.0505
+        rotation 1 -1.0619730839640036e-11 -1.0619691831262171e-11 1.5708
+        children [
+          DEF WL Shape {
+            appearance PBRAppearance {
+              baseColor 0 0 0
+              roughness 1
+              metalness 0
+            }
+            geometry Cylinder {
+              height 0.01
+              radius 0.025
+            }
+          }
+        ]
+        name "solid(3)"
+        boundingObject USE WL
+        physics Physics {
+        }
+      }
+    }
+    InertialUnit {
+      name "imu"
+    }
+    DEF WR Hinge2Joint {
+      jointParameters HingeJointParameters {
+        axis 0 1 0
+        anchor 0.045 0.025 0.0505
+      }
+      jointParameters2 JointParameters {
+      }
+      device [
+        Brake {
+          name "steer_right_brake"
+        }
+        RotationalMotor {
+          name "steer_right_motor"
+        }
+      ]
+      device2 [
+        RotationalMotor {
+          name "front_right_motor"
+        }
+      ]
+      endPoint Solid {
+        translation 0.045 0.025 0.0505
+        rotation 1 4.781106053497454e-12 4.781088491546558e-12 1.5708
+        children [
+          DEF Wheel_Right Shape {
+            appearance PBRAppearance {
+              baseColor 0 0 0
+              roughness 1
+              metalness 0
+            }
+            geometry Cylinder {
+              height 0.01
+              radius 0.025
+            }
+          }
+        ]
+        name "solid(2)"
+        boundingObject USE Wheel_Right
+        physics Physics {
+        }
+      }
+    }
+    DEF Windscreen Solid {
+      translation 0.066 0.051 0
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.08 0.78 1
+            roughness 0.2
+            metalness 0.8
+          }
+          geometry Box {
+            size 0.03 0.01 0.08
+          }
+        }
+      ]
+      name "solid(4)"
+    }
+    DEF DWL HingeJoint {
+      jointParameters HingeJointParameters {
+        axis 0 0 1
+        anchor -0.045 0.025 -0.0505
+      }
+      device [
+        Brake {
+          name "left_brake"
+        }
+        PositionSensor {
+          name "left_pos_sensor"
+        }
+        RotationalMotor {
+          name "left_motor"
+        }
+      ]
+      endPoint Solid {
+        translation -0.045 0.025 -0.0505
+        rotation -1 0 0 1.5708
+        children [
+          DEF Driven_Wheel_Left Shape {
+            appearance PBRAppearance {
+              baseColor 0 0 0
+              roughness 1
+              metalness 0
+            }
+            geometry Cylinder {
+              height 0.01
+              radius 0.025
+            }
+          }
+        ]
+        name "solid(1)"
+        boundingObject USE Driven_Wheel_Left
+        physics Physics {
+        }
+      }
+    }
+    DEF DWR HingeJoint {
+      jointParameters HingeJointParameters {
+        axis 0 0 1
+        anchor -0.045 0.025 0.0505
+      }
+      device [
+        Brake {
+          name "right_brake"
+        }
+        PositionSensor {
+          name "right_pos_sensor"
+        }
+        RotationalMotor {
+          name "right_motor"
+        }
+      ]
+      endPoint Solid {
+        translation -0.045 0.025 0.05049999999999999
+        rotation -1 0 0 1.5708
+        children [
+          DEF Driven_Wheel_Right Shape {
+            appearance PBRAppearance {
+              baseColor 0 0 0
+              roughness 1
+              metalness 0
+            }
+            geometry Cylinder {
+              height 0.01
+              radius 0.025
+            }
+          }
+        ]
+        boundingObject USE Driven_Wheel_Right
+        physics Physics {
+        }
+      }
+    }
+    DEF Chassis Transform {
+      translation 0 0.035 0
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 1 0.78 0.08
+            roughness 1
+            metalness 0.25
+          }
+          geometry Box {
+            size 0.16 0.04 0.1
+          }
+        }
+      ]
+    }
+    Accelerometer {
+    }
+  ]
+  boundingObject USE Chassis
+  physics Physics {
+  }
+  controller "kf_variance"
+}
+UnevenTerrain {
+  size 50 0.01 50
+}
